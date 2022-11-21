@@ -13,36 +13,13 @@ resource "aws_network_interface" "onprem" {
     security_groups = var.sg_id_onprem
 }
 
-resource "aws_instance" "prod" {
+resource "aws_instance" "prod_and_test" {
+    count = 3
     ami = var.ami #eu-west-2, amz
     instance_type = var.instance_type
 
     network_interface {
-      network_interface_id = aws_network_interface.prod.id
-      device_index = 0
-    }
-
-    key_name = var.key_name
-}
-
-resource "aws_instance" "test" {
-    ami = var.ami #eu-west-2, amz
-    instance_type = var.instance_type
-
-    network_interface {
-      network_interface_id = aws_network_interface.test.id
-      device_index = 0
-    }
-
-    key_name = var.key_name
-}
-
-resource "aws_instance" "onprem" {
-    ami = var.ami #eu-west-2, amz
-    instance_type = var.instance_type
-
-    network_interface {
-      network_interface_id = aws_network_interface.onprem.id
+      network_interface_id = [aws_network_interface.prod.id, aws_network_interface.test.id, aws_network_interface.onprem.id][count.index]
       device_index = 0
     }
 

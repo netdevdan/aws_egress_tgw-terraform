@@ -1,3 +1,5 @@
+#=====================VPC=======================
+
 resource "aws_vpc" "prod" {
   cidr_block = var.cidr_block.prod
 
@@ -30,6 +32,8 @@ resource "aws_vpc" "egress" {
   }
 }
 
+#=====================IGW=======================
+
 resource "aws_internet_gateway" "igw" {
   count  = 2
   vpc_id = [aws_vpc.onprem.id, aws_vpc.egress.id][count.index]
@@ -39,6 +43,8 @@ resource "aws_internet_gateway" "igw" {
   }
 
 }
+
+#=====================Subnets=======================
 
 resource "aws_subnet" "priv_sub_prod" {
   count      = length(var.availability_zones)
@@ -194,7 +200,7 @@ resource "aws_route_table_association" "egress_rtb_ass_pub" {
   subnet_id = element(aws_subnet.pub_sub_egress.*.id, count.index)
   route_table_id = aws_route_table.egress_rtb_pub.id
 }
-######
+
 resource "aws_route_table" "egress_rtb_priv_A" {
   vpc_id = aws_vpc.egress.id
 
