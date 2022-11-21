@@ -21,7 +21,7 @@ Feel free to use and edit it as you please.
 - OnPrem VPC can communicate with VPC Prod and Test.
 
 ## Notes:
-- For us in eu-west-2 due to the AMI IDs. Feel free to change it and have a play.
+- For use in eu-west-2 due to the AMI IDs. Feel free to change it and have a play.
 - Will take about 3-4 minutes to completely spin up, mostly due to the NAT GWs and TGW. 
 - Will be cleaned up in the near future. 
 - I'm not liable for your misery around the costs of the NAT Gateways.... 
