@@ -3,7 +3,7 @@ cidr_block         = { egress = "10.10.0.0/16", prod = "10.40.0.0/16", test = "1
 
 key_name      = "TGW-test"
 instance_type = "t3.micro"
-ami = "ami-04706e771f950937f"
+ami           = "ami-04706e771f950937f"
 
 tgw_asn = "65150"
 

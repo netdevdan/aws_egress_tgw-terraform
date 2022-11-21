@@ -19,9 +19,9 @@ variable "tgw_asn" {
 }
 
 variable "sg_cidr" {
-  type = list
+  type = list(any)
 }
 
 variable "ami" {
-    type = string
+  type = string
 }
