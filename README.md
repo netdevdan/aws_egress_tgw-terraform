@@ -22,6 +22,7 @@ Feel free to use and edit it as you please.
 
 ## How to use this template
 - Clone or download this repo to your local machine
+- Run the terraform init command to initialise the directory.
 - Edit main.tf to include your region under the AWS provider. 
 - Edit the terraform.tfvars to change the variables;
   - ami - select an AMI from your region to be used on the EC2 instances. 
